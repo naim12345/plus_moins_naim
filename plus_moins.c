@@ -29,14 +29,83 @@ int randoms(int lower, int upper, int count)
         return num;
       }
 }
+int deuxjoueur()
+{
+     int ntour,ncoup,c,b=0;
+     int jouer=0,a=0;
+     int lower=0, upper=100, count=1;
+     srand(time(0));
+     int choix_joueur=0;
+     int valeur_a_trouver=randoms(lower,upper,count);
+     printf("Choisissez le nombre de tours : \n");
+     scanf("%d",&ntour);
+     for(int j=1;j<=ntour;j++)
+         {
+             
+             printf("Choisissez le nombre de coups superiure a dix : \n");
+             scanf("%d",&ncoup);
+             printf("Quelle joueur est en train de jouer: \n");
+             scanf("%d",&jouer);
+             b=0;
+             if(jouer==1)
+              {
+                for(int i=1;i<=ncoup;i++)
+                 {
+                  
+                  printf("Veuillez entrer un chiffre entier : \n");
+                  scanf("%d",&choix_joueur);
+                  plus_moins(choix_joueur,valeur_a_trouver);
+                  if (choix_joueur == valeur_a_trouver)
+                     {
+                       c=ncoup-b;
+                       printf("Le score de joueur 1 est de :%d",c);
+                       valeur_a_trouver=randoms(lower,upper,count);
+                       break;
+                     }
+                  b++;
+                  
+                 }
+              }
+               else
+                 {
+                   for(int i=1;i<=ncoup;i++)
+                     {
+                       printf("Veuillez entrer un chiffre entier : \n");
+                       scanf("%d",&choix_joueur);
+                       plus_moins(choix_joueur,valeur_a_trouver);
+                       if (choix_joueur == valeur_a_trouver)
+                          {
+                            c=ncoup-b;
+                            printf("Le score de joueur 2 est de :%d",c);
+                            valeur_a_trouver=randoms(lower,upper,count);
+                            break;
+                          }
+                       b++;
+                      }
+                 }
+             
+
+         }   
+
+}
 int main()
 {
         int lower=0, upper=100, count=1;
 	int choix_joueur;
         int a=0,x=0;
-        int diff;
+        int diff,mode;
         srand(time(0));
         int valeur_a_trouver=randoms(lower,upper,count);
+        printf("Veuillez choisir votre mode de difficlter: \n");
+        printf("1 joueur\n");
+        printf("2 joueur\n");
+        scanf("%d",&mode);
+        if (mode==2 )
+        {
+          deuxjoueur();
+          exit(0);
+        }
+        
         printf("Veuillez choisir votre mode de difficulte : \n");
         printf("1-facile\n");
         printf("2-normale\n");
@@ -104,6 +173,7 @@ int main()
             }
            
           }
+
         }
         printf("Nombre de tentatives : %d\n",a);
 }
