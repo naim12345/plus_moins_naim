@@ -96,7 +96,7 @@ int main()
         int diff,mode;
         srand(time(0));
         int valeur_a_trouver=randoms(lower,upper,count);
-        printf("Veuillez choisir votre mode de difficlter: \n");
+        printf("Veuillez choisir le nombre de joueurs: \n");
         printf("1 joueur\n");
         printf("2 joueur\n");
         scanf("%d",&mode);
